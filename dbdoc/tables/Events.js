@@ -43,7 +43,7 @@ paper.on('cell:pointerup', function(cellView , evt) {
 /*define positionning of different beans around central bean*/
 
 var uml = joint.shapes.uml;
-														
+											
    var classes = {  
 EVENTS: new uml.BDDTable({
 		id:'EVENTS',
@@ -54,9 +54,9 @@ EVENTS: new uml.BDDTable({
 										'ID: INTEGER',
 																															],
         methods: [
-																	'URL: VARCHAR(255)',
-														'NOM: VARCHAR(255)',
+																	'NOM: VARCHAR(255)',
 														'IDCREATEUR: INTEGER',
+														'ACTIF: INTEGER',
 											]
     }),
 
@@ -65,34 +65,34 @@ EVENTS: new uml.BDDTable({
 						USERS: new uml.BDDTable({
 		id:'USERS',
         position: { x:810.0  , y: 350.0 },
-        size: { width: 220, height: 126 },
+        size: { width: 220, height: 93 },
         name: 'USERS',
         attributes: [
 										'ID: INTEGER',
-																																													],
+																								],
         methods: [
 																	'MAIL: VARCHAR(255)',
 														'PASSWD: VARCHAR(100)',
-														'NOM: VARCHAR(100)',
-														'PRENOM: VARCHAR(100)',
-														'SOCIETE: VARCHAR(255)',
 									]
     }),
 	  
-									
-								RENCONTRES: new uml.BDDTable({
-		id:'RENCONTRES',
+											
+								PARTICIPANTS: new uml.BDDTable({
+		id:'PARTICIPANTS',
         position: { x:90.0  , y: 349.99999999999994 },
-        size: { width: 220, height: 82 },
-        name: 'RENCONTRES',
+        size: { width: 220, height: 115 },
+        name: 'PARTICIPANTS',
         attributes: [
-																	'IDEVENT: INTEGER',
+										'IDEVENT: INTEGER',
+																																			'MAIL: VARCHAR(255)',
 										],
         methods: [
-										'IDPARTICIPANTS: INTEGER',
+																	'NOM: VARCHAR(100)',
+														'PRENOM: VARCHAR(100)',
+														'SOCIETE: VARCHAR(255)',
 																]
     }),
-								};
+			};
 
 _.each(classes, function(c) { graph.addCell(c); });
 
@@ -111,12 +111,12 @@ var relations = [
 	'.marker-target': { d: 'M 20 0 L 0 5 L 20 10 z' }
 	},
 	labels: [
-	{ position: 60, attrs: { text: { text: 'SQL141019184330390' } }}
+	{ position: 60, attrs: { text: { text: 'SQL141020170116640' } }}
 	]
 }),	
 	 
-									new joint.dia.Link({
-	source: { id: classes.RENCONTRES.id },
+											new joint.dia.Link({
+	source: { id: classes.PARTICIPANTS.id },
 	target: { id: classes.EVENTS.id },
 	vertices: [],
 	smooth: false,
@@ -124,10 +124,10 @@ var relations = [
 	'.marker-target': { d: 'M 20 0 L 0 5 L 20 10 z' }
 	},
 	labels: [
-	{ position: 60, attrs: { text: { text: 'SQL141019184334900' } }}
+	{ position: 60, attrs: { text: { text: 'SQL141020170145120' } }}
 	]
 }),	
-								];
+			];
 
 _.each(relations, function(r) { graph.addCell(r); });
 _.each(relations, function(r) { r.toBack(); });

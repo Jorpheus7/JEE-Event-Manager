@@ -43,25 +43,27 @@ paper.on('cell:pointerup', function(cellView , evt) {
 /*define positionning of different beans around central bean*/
 
 var uml = joint.shapes.uml;
-											
+									
    var classes = {  
-USERS: new uml.BDDTable({
-		id:'USERS',
+PARTICIPANTS: new uml.BDDTable({
+		id:'PARTICIPANTS',
         position: { x:450  , y: 350 },
-        size: { width: 180, height: 83 },
-        name: 'USERS',
+        size: { width: 180, height: 105 },
+        name: 'PARTICIPANTS',
         attributes: [
-										'ID: INTEGER',
-																								],
+										'IDEVENT: INTEGER',
+																																			'MAIL: VARCHAR(255)',
+										],
         methods: [
-																	'MAIL: VARCHAR(255)',
-														'PASSWD: VARCHAR(100)',
-											]
+																	'NOM: VARCHAR(100)',
+														'PRENOM: VARCHAR(100)',
+														'SOCIETE: VARCHAR(255)',
+																		]
     }),
 
-	  
-						
-								EVENTS: new uml.BDDTable({
+	
+		
+						EVENTS: new uml.BDDTable({
 		id:'EVENTS',
         position: { x:810.0  , y: 350.0 },
         size: { width: 220, height: 104 },
@@ -75,7 +77,8 @@ USERS: new uml.BDDTable({
 														'ACTIF: INTEGER',
 									]
     }),
-								};
+	  
+									};
 
 _.each(classes, function(c) { graph.addCell(c); });
 
@@ -85,20 +88,20 @@ _.each(classes, function(c) { graph.addCell(c); });
 
 
 var relations = [
- 
-						new joint.dia.Link({
-	source: { id: classes.EVENTS.id },
-	target: { id: classes.USERS.id },
+	new joint.dia.Link({
+	source: { id: classes.PARTICIPANTS.id },
+	target: { id: classes.EVENTS.id },
 	vertices: [],
 	smooth: false,
 	attrs: {
 	'.marker-target': { d: 'M 20 0 L 0 5 L 20 10 z' }
 	},
 	labels: [
-	{ position: 60, attrs: { text: { text: 'SQL141020170116640' } }}
+	{ position: 60, attrs: { text: { text: 'SQL141020170145120' } }}
 	]
 }),	
-								];
+	 
+									];
 
 _.each(relations, function(r) { graph.addCell(r); });
 _.each(relations, function(r) { r.toBack(); });
@@ -106,7 +109,7 @@ _.each(relations, function(r) { r.toBack(); });
  function saveGraph(){
 	if(typeof(Storage)!=="undefined")
   	{
-		localStorage.jsonUsersGraph=(JSON.stringify(graph.toJSON()));
+		localStorage.jsonParticipantsGraph=(JSON.stringify(graph.toJSON()));
   	}
 	else
   	{
@@ -117,7 +120,7 @@ _.each(relations, function(r) { r.toBack(); });
  function loadGraph(){
 	if(typeof(Storage)!=="undefined")
   	{
-		 graph.fromJSON(JSON.parse(localStorage.jsonUsersGraph));
+		 graph.fromJSON(JSON.parse(localStorage.jsonParticipantsGraph));
   	}
 	else
   	{

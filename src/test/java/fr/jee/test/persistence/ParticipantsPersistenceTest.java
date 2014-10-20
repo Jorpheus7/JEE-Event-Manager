@@ -5,49 +5,49 @@
 package fr.jee.test.persistence;
 
 
-import fr.jee.model.jpa.EventsEntity;
-import fr.jee.mock.EventsEntityMock;
+import fr.jee.model.jpa.ParticipantsEntity;
+import fr.jee.mock.ParticipantsEntityMock;
 import fr.jee.persistence.PersistenceServiceProvider;
-import fr.jee.persistence.services.EventsPersistence;
+import fr.jee.persistence.services.ParticipantsPersistence;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * JUnit test case for Events persistence service
+ * JUnit test case for Participants persistence service
  * 
  * @author Telosys Tools Generator
  *
  */
-public class EventsPersistenceTest 
+public class ParticipantsPersistenceTest 
 {
 	@Test
 	public void test1() {
 		
 		System.out.println("Test count ..." );
 		
-		EventsPersistence service = PersistenceServiceProvider.getService(EventsPersistence.class);
+		ParticipantsPersistence service = PersistenceServiceProvider.getService(ParticipantsPersistence.class);
 		System.out.println("CountAll = " + service.countAll() );
 	}
 	
 	@Test
 	public void test2() {
 		
-		System.out.println("Test Events persistence : delete + load ..." );
+		System.out.println("Test Participants persistence : delete + load ..." );
 		
-		EventsPersistence service = PersistenceServiceProvider.getService(EventsPersistence.class);
+		ParticipantsPersistence service = PersistenceServiceProvider.getService(ParticipantsPersistence.class);
 		
-		EventsEntityMock mock = new EventsEntityMock();
+		ParticipantsEntityMock mock = new ParticipantsEntityMock();
 		
 		// TODO : set primary key values here 
-		process( service, mock, 0  );
+		process( service, mock, 0 , "A"  );
 		// process( service, mock, ... );
 	}
 
-	private void process(EventsPersistence service, EventsEntityMock mock, Integer id ) {
+	private void process(ParticipantsPersistence service, ParticipantsEntityMock mock, Integer idevent, String mail ) {
 		System.out.println("----- "  );
 		System.out.println(" . load : " );
-		EventsEntity entity = service.load( id );
+		ParticipantsEntity entity = service.load( idevent, mail );
 		if ( entity != null ) {
 			// Found 
 			System.out.println("   FOUND : " + entity );
@@ -61,11 +61,11 @@ public class EventsPersistenceTest
 			// Not found 
 			System.out.println("   NOT FOUND" );
 			// Create a new instance 
-			entity = mock.createInstance( id ) ;
+			entity = mock.createInstance( idevent, mail ) ;
 			Assert.assertNotNull(entity);
 
 			// This entity references the following entities : 
-			// . Users
+			// . Events
 			/* Insert only if references are OK
 			// Try to insert the new instance
 			System.out.println(" . insert : " + entity );
@@ -74,7 +74,7 @@ public class EventsPersistenceTest
 			*/
 
 			System.out.println(" . delete : " );
-			boolean deleted = service.delete( id );
+			boolean deleted = service.delete( idevent, mail );
 			System.out.println("   deleted = " + deleted);
 		}		
 	}
