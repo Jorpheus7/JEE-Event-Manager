@@ -48,4 +48,24 @@
     <servlet-name>NewEvent</servlet-name>
     <url-pattern>/NewEvent</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InscriptionEvent</display-name>
+    <servlet-name>InscriptionEvent</servlet-name>
+    <servlet-class>fr.jee.event.InscriptionEvent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InscriptionEvent</servlet-name>
+    <url-pattern>/InscriptionEvent</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DescriptionEvent</display-name>
+    <servlet-name>DescriptionEvent</servlet-name>
+    <servlet-class>fr.jee.event.DescriptionEvent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DescriptionEvent</servlet-name>
+    <url-pattern>/DescriptionEvent</url-pattern>
+  </servlet-mapping>
 </web-app>
