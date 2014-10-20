@@ -12,6 +12,10 @@ CREATE TABLE Events(
  nom varchar(255) NOT NULL,
  idCreateur INTEGER NOT NULL,
  actif INT NOT NULL,
+ dateDebut DATE NOT NULL,
+ heureDebut TIME NOT NULL,
+ dateFin DATE NOT NULL,
+ heureFin TIME NOT NULL,
  FOREIGN KEY(idCreateur) REFERENCES Users(id),
  PRIMARY KEY (id)
 );

@@ -48,15 +48,19 @@ var uml = joint.shapes.uml;
 EVENTS: new uml.BDDTable({
 		id:'EVENTS',
         position: { x:450  , y: 350 },
-        size: { width: 180, height: 94 },
+        size: { width: 180, height: 138 },
         name: 'EVENTS',
         attributes: [
 										'ID: INTEGER',
-																															],
+																																																											],
         methods: [
 																	'NOM: VARCHAR(255)',
 														'IDCREATEUR: INTEGER',
 														'ACTIF: INTEGER',
+														'DATEDEBUT: DATE',
+														'HEUREDEBUT: TIME',
+														'DATEFIN: DATE',
+														'HEUREFIN: TIME',
 											]
     }),
 
@@ -111,7 +115,7 @@ var relations = [
 	'.marker-target': { d: 'M 20 0 L 0 5 L 20 10 z' }
 	},
 	labels: [
-	{ position: 60, attrs: { text: { text: 'SQL141020170116640' } }}
+	{ position: 60, attrs: { text: { text: 'SQL141020181910460' } }}
 	]
 }),	
 	 
@@ -124,7 +128,7 @@ var relations = [
 	'.marker-target': { d: 'M 20 0 L 0 5 L 20 10 z' }
 	},
 	labels: [
-	{ position: 60, attrs: { text: { text: 'SQL141020170145120' } }}
+	{ position: 60, attrs: { text: { text: 'SQL141020181911570' } }}
 	]
 }),	
 			];
