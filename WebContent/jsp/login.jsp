@@ -10,21 +10,25 @@
 </head>
 <body>
 	<div id="global">
-		<form id="login">
-		    <h1>Log In</h1>
+		<form id="login" method="post" action="<c:url value="/doLogin"/>">
+		    <h1>Log in</h1>
 		    <% 
 		    // Display a message if wrong password or redirected from unauthorized zone
-			if(new Boolean(request.getParameter("redirected")).booleanValue()){
-				; 
-			}
+			if(request.getParameter("invalid") != null
+					&& new Boolean(request.getParameter("invalid")).booleanValue()){
+				out.println("<h5 class=\"errorMessage\">Identifiant ou mot de passe invalide</h5>"); 
+			}else if(request.getParameter("redirected") != null
+					&& new Boolean(request.getParameter("redirected")).booleanValue()){
+				out.println("<h5 class=\"errorMessage\">Vous devez vous identifier pour accéder à cette section</h5>"); 
+			} 
 			%>
 		    <fieldset id="inputs">
-		        <input id="username" type="text" placeholder="Username" autofocus required>   
-		        <input id="password" type="password" placeholder="Password" required>
+		        <input id="mail" type="text" placeholder="Email" autofocus required>   
+		        <input id="password" type="password" placeholder="Mot de passe" required>
 		    </fieldset>
 		    <fieldset id="actions">
-		        <input type="submit" id="submit" value="Log in">
-		        <a href="">Forgot your password?</a><a href="">Register</a>
+		        <input type="submit" id="submit" value="Se connecter">
+		        <a href="<c:url value="/register"/>">Créer un compte</a>
 		    </fieldset>
 		</form>
 	</div>

@@ -43,7 +43,7 @@ public class LoginFilter implements Filter {
 		if(attr == null || !(Boolean)attr){
 			HttpServletResponse res = (HttpServletResponse) response;
 			//res.sendRedirect("/login");
-			req.getRequestDispatcher("/login").forward(request, response);
+			req.getRequestDispatcher("/login?redirected=true").forward(request, response);
 		}else{
 			// pass the request along the filter chain
 			chain.doFilter(request, response);
