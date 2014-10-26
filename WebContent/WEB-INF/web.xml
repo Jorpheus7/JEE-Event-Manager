@@ -19,7 +19,7 @@
     <url-pattern>/auth/*</url-pattern>
   </filter-mapping>
   <servlet>
-    <description>Login Servlet</description>
+    <description>Login</description>
     <display-name>Login</display-name>
     <servlet-name>Login</servlet-name>
     <servlet-class>fr.jee.login.Login</servlet-class>
@@ -27,5 +27,35 @@
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
     <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoLogin</display-name>
+    <servlet-name>DoLogin</servlet-name>
+    <servlet-class>fr.jee.login.DoLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoLogin</servlet-name>
+    <url-pattern>/doLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Register</description>
+    <display-name>Register</display-name>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>fr.jee.login.Register</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>DoRegister</description>
+    <display-name>DoRegister</display-name>
+    <servlet-name>DoRegister</servlet-name>
+    <servlet-class>fr.jee.login.DoRegister</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoRegister</servlet-name>
+    <url-pattern>/doRegister</url-pattern>
   </servlet-mapping>
 </web-app>

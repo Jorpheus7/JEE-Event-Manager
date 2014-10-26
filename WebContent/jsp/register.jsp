@@ -10,26 +10,30 @@
 </head>
 <body>
 	<div id="global">
-		<form id="login" method="POST" action="<c:url value="/doLogin"/>">
-			<h1>Log in</h1>
+		<form id="register" method="POST" action="<c:url value="/doRegister"/>">
+			<h1>Compte</h1>
 			<% 
 		    // Display a message if wrong password or redirected from unauthorized zone
+		    String mail = "";
 			if(request.getParameter("status") != null){
-				if("invalid".equals(request.getParameter("status"))){
-					out.println("<h5 class=\"errorMessage\">Identifiant ou mot de passe invalide</h5>"); 
-				}else if("redirected".equals(request.getParameter("status"))){
-					out.println("<h5 class=\"errorMessage\">Vous devez vous identifier pour accéder à cette section</h5>"); 
+				if("differentPasswords".equals(request.getParameter("status"))){
+					out.println("<h5 class=\"errorMessage\">Les deux mots de passe ne concordent pas !</h5>");
+					if(request.getParameter("mail") != null){
+						mail = request.getParameter("mail");
+					}
 				}
 			}
 			%>
 			<fieldset id="inputs">
-				<input id="mail" name="mail" type="email" placeholder="Email" autofocus required>
+				<input id="mail" name="mail" type="email" placeholder="Email" value="<%=mail%>" autofocus required>
 				<input id="password" name="password" type="password" placeholder="Mot de passe"
+					required>
+				<input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirmer le mot de passe"
 					required>
 			</fieldset>
 			<fieldset id="actions">
-				<input type="submit" id="submit" value="Se connecter"> <a
-					href="<c:url value="/register"/>">Créer un compte</a>
+				<input type="submit" id="submit" value="Créer le compte"> 
+				<a href="<c:url value="/login"/>">Déjà un compte ? Se connecter</a>
 			</fieldset>
 		</form>
 	</div>

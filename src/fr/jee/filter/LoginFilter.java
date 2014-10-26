@@ -2,7 +2,6 @@ package fr.jee.filter;
 
 import java.io.IOException;
 
-import javax.naming.Context;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -10,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -41,9 +39,7 @@ public class LoginFilter implements Filter {
 		HttpSession session = req.getSession();
 		Object attr = session.getAttribute("isAuthentified");
 		if(attr == null || !(Boolean)attr){
-			HttpServletResponse res = (HttpServletResponse) response;
-			//res.sendRedirect("/login");
-			req.getRequestDispatcher("/login?redirected=true").forward(request, response);
+			req.getRequestDispatcher("/login?status=redirected").forward(request, response);
 		}else{
 			// pass the request along the filter chain
 			chain.doFilter(request, response);
