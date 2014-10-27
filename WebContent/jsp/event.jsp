@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="global">
-		<form id="event">
+		<form id="event" method="post" action="creation">
 			<h1>Créer un événement</h1>
 			<fieldset id="inputs">
 				<input id="eventname"   type="text" palceholder="Nom de l'événement" autofocus required>

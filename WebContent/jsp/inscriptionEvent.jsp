@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="global">
-		<form id="event">
+		<form id="event" method="post" action="creation">
 			<h1>Inscription à <%=request.getParameter("name")%></h1>
 			<fieldset id="inputs">
 				<input id="mail" 	type="text" palceholder="Adresse mail" required>
