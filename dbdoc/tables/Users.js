@@ -64,13 +64,14 @@ USERS: new uml.BDDTable({
 								EVENTS: new uml.BDDTable({
 		id:'EVENTS',
         position: { x:810.0  , y: 350.0 },
-        size: { width: 220, height: 148 },
+        size: { width: 220, height: 159 },
         name: 'EVENTS',
         attributes: [
 										'ID: INTEGER',
-																																																											],
+																																																																		],
         methods: [
 																	'NOM: VARCHAR(255)',
+														'ADRESSE: VARCHAR(255)',
 														'IDCREATEUR: INTEGER',
 														'ACTIF: INTEGER',
 														'DATEDEBUT: DATE',
@@ -99,7 +100,7 @@ var relations = [
 	'.marker-target': { d: 'M 20 0 L 0 5 L 20 10 z' }
 	},
 	labels: [
-	{ position: 60, attrs: { text: { text: 'SQL141020181910460' } }}
+	{ position: 60, attrs: { text: { text: 'SQL141027170947030' } }}
 	]
 }),	
 								];
