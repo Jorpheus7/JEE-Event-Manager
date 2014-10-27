@@ -30,7 +30,7 @@ public class EventsPersistenceTest
 		System.out.println("CountAll = " + service.countAll() );
 	}
 	
-	@Test
+	/*@Test
 	public void test2() {
 		
 		System.out.println("Test Events persistence : delete + load ..." );
@@ -42,7 +42,7 @@ public class EventsPersistenceTest
 		// TODO : set primary key values here 
 		process( service, mock, 0  );
 		// process( service, mock, ... );
-	}
+	}*/
 
 	private void process(EventsPersistence service, EventsEntityMock mock, Integer id ) {
 		System.out.println("----- "  );

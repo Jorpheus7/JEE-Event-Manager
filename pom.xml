@@ -11,6 +11,12 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- ==================== DEPENDENCIES for "COMPILE" SCOPE ==================== -->
 		<!-- Add the JDBC driver here -->
 		<dependency>
@@ -22,12 +28,12 @@
 		<!-- JPA based on Hibernate implemenataion -->
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId> 
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.1.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId> 
+			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.2.2.Final</version>
 		</dependency>
 
@@ -40,7 +46,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>4.3.1.Final</version> 
+			<version>4.3.1.Final</version>
 		</dependency>
 
 		<!-- Logging : SLF4J is used by Hibernate -->
@@ -52,13 +58,13 @@
 		<!-- SLF4J Simple implementation : sends log messages to the console -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId> 
+			<artifactId>slf4j-simple</artifactId>
 			<version>1.7.5</version>
 		</dependency>
-		
+
 		<!-- ==================== DEPENDENCIES for "TEST" SCOPE ==================== -->
 		<!-- Dependencies for Unit Testing -->
-  		<dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit-dep</artifactId>
 			<version>4.11</version>
@@ -72,7 +78,13 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

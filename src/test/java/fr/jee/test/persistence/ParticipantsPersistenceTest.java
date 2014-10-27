@@ -30,7 +30,7 @@ public class ParticipantsPersistenceTest
 		System.out.println("CountAll = " + service.countAll() );
 	}
 	
-	@Test
+	/*@Test
 	public void test2() {
 		
 		System.out.println("Test Participants persistence : delete + load ..." );
@@ -42,7 +42,7 @@ public class ParticipantsPersistenceTest
 		// TODO : set primary key values here 
 		process( service, mock, 0 , "A"  );
 		// process( service, mock, ... );
-	}
+	}*/
 
 	private void process(ParticipantsPersistence service, ParticipantsEntityMock mock, Integer idevent, String mail ) {
 		System.out.println("----- "  );

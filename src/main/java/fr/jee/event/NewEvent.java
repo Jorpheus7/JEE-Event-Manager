@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.jee.model.jpa.EventsEntity;
 
+
 /**
  * Servlet implementation class Event
  */
