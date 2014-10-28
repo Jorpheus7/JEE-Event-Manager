@@ -28,6 +28,36 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>DoLogin Servlet</description>
+    <display-name>DoLogin</display-name>
+    <servlet-name>DoLogin</servlet-name>
+    <servlet-class>fr.jee.login.DoLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoLogin</servlet-name>
+    <url-pattern>/doLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Register Servlet</description>
+    <display-name>Register</display-name>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>fr.jee.login.Register</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>DoRegister Servlet</description>
+    <display-name>DoRegister</display-name>
+    <servlet-name>DoRegister</servlet-name>
+    <servlet-class>fr.jee.login.DoRegister</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoRegister</servlet-name>
+    <url-pattern>/doRegister</url-pattern>
+  </servlet-mapping>
     <servlet>
     <description></description>
     <display-name>Event</display-name>
