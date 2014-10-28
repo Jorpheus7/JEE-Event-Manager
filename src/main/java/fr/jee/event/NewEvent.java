@@ -76,13 +76,13 @@ public class NewEvent extends HttpServlet {
 		
 		// On récupère le useur grâce à l'id dans la session
 		//id = (int) session.getAttribute("id");
-		id = 0;
+		id = 1;
 		event=v.validationEvenement(nom, adresse, hdebut, hfin, ddebut, dfin,id);
 		
 		//Si il y a une erreur
 		if(event!= null){
 			jpaEvent.insert(event);
-			response.sendRedirect(request.getContextPath() + "DescriptionEvent");
+			response.sendRedirect("ListEvent");
 		}
 		else{
 			response.sendRedirect("NewEvent?erreur=true");

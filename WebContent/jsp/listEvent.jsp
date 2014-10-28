@@ -9,50 +9,39 @@
 <title>Vos événements</title>
 </head>
 <body>
-		<form id="event" method="post" action="listEvent">
+		<form id="event" method="post" action="ListEvent">
+		<fieldset id="inputs">
 				<legend>Vos événements : </legend>
 				<c:forEach items="${requestScope.events}" var="event">
+				
 				<label for="eventname">Nom de l'événement</label>
 				<p id="eventname">
 				${event.nom}
 				</p>
-				 <br />
 				
 				<label for="adresse">Adresse</label>
 				<p id="adresse">
 				${event.adresse}
 				</p>
-				 <br />
 				
-				<label for="hdebut">Heure Début</label>
-				<p id="hdebut">
-				${event.heuredebut}
+				<label for="debut">Début</label>
+				<p id="debut">
+				${event.datedebut},${event.heuredebut},     
 				</p>
-				 <br />
 				
-				<label for="hfin">Heure Fin</label>
-				<p id="hfin">
-				${event.heurefin}
-				</p>
-				 <br />
 				
-				<label for="ddebut">Date Début</label>
-				<p id="ddebut">
-				${event.datedebut}
+				<label for="fin">Fin</label>
+				<p id="fin">
+				${event.datefin},${event.heurefin} 
 				</p>
-				 <br />
-				
-				<label for="dfin">Date Fin</label>
-				<p id="dfin">
-				${event.datefin}
-				</p>
-				 <br />
+
 				<c:if test="${event.actif == 0 }">
-				<input class="hidden" type="text" value="${event.id}" name="id">
+				<input type="hidden" type="text" value="${event.id}" name="id">
 		        <input type="submit" id="submit" name ="publier" value="Publier" class="sansLabel">
 		        </c:if>
 				 <br />
 				</c:forEach>
+				</fieldset>
 		</form>
 		<a href="NewEvent">Créer un événement</a>
 </body>

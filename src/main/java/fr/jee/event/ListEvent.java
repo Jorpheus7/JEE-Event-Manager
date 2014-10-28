@@ -30,7 +30,7 @@ public class ListEvent extends HttpServlet {
     }
 
     private void process(HttpServletRequest request,HttpServletResponse response)  throws ServletException, IOException{
-		getServletContext().getRequestDispatcher("/jsp/event.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/jsp/listEvent.jsp").forward(request, response);
 		
 	}
     
@@ -39,8 +39,9 @@ public class ListEvent extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		int id = (int) session.getAttribute("id");
+		int id = 1; //(int) session.getAttribute("id");
 		List<EventsEntity> events = new ListEventReq().execute(id);
+		request.setAttribute("events", events);
 		process(request,response);
 		
 	}
@@ -59,7 +60,7 @@ public class ListEvent extends HttpServlet {
 			jpaEvent.save(event);
 
 		}
-		response.sendRedirect("listEvent");
+		response.sendRedirect("ListEvent");
 		
 	}
 
