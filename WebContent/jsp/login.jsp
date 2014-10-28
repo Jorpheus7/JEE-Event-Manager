@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="global">
-		<form id="login">
+		<form id="login" method="POST" action="<c:url value="/doLogin"/>">
 		    <h1>Log In</h1>
 		    <% 
 		    // Display a message if wrong password or redirected from unauthorized zone
@@ -24,7 +24,7 @@
 		    </fieldset>
 		    <fieldset id="actions">
 		        <input type="submit" id="submit" value="Log in">
-		        <a href="">Forgot your password?</a><a href="">Register</a>
+		        <a href="<c:url value="/register"/>">Créer un compte</a>
 		    </fieldset>
 		</form>
 	</div>
