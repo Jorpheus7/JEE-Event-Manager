@@ -76,7 +76,6 @@ public class NewEvent extends HttpServlet {
 		
 		// On récupère le useur grâce à l'id dans la session
 		//id = (int) session.getAttribute("id");
-		
 		id = 0;
 		event=v.validationEvenement(nom, adresse, hdebut, hfin, ddebut, dfin,id);
 		
