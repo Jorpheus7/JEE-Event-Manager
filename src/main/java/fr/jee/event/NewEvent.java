@@ -33,7 +33,7 @@ public class NewEvent extends HttpServlet {
 	public static final String CHAMP_HFIN = "hfin";
 	public static final String CHAMP_DDEBUT = "ddebut";
 	public static final String CHAMP_DFIN = "dfin";
-	private Map<String, String> erreurs      = new HashMap<String, String>();
+	
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -66,14 +66,7 @@ public class NewEvent extends HttpServlet {
 		String hfin = request.getParameter(CHAMP_HFIN);
 		String ddebut = request.getParameter(CHAMP_DDEBUT);
 		String dfin = request.getParameter(CHAMP_DFIN);
-		
-		//Création des dates
 		validateEvent v = new validateEvent();
-		Boolean valide = true;
-		Date dd , df ,hd , hf = new Date();
-		dd = df = hd = hf = null;
-		
-		
 		HttpSession session = request.getSession(false);
 		int id;
 		UsersEntity user = new UsersEntity();
@@ -81,83 +74,20 @@ public class NewEvent extends HttpServlet {
 		EventsPersistenceJPA jpaEvent = new EventsPersistenceJPA();
 		EventsEntity event = new EventsEntity();
 		
-		//Formats des dates
-		SimpleDateFormat spDate = new SimpleDateFormat("dd-MM-yyyy");
-		SimpleDateFormat spHeure = new SimpleDateFormat("HH:mm");
-		
 		// On récupère le useur grâce à l'id dans la session
 		//id = (int) session.getAttribute("id");
-		//user = jpaUser.load(id);
-		//event.setUsers(user);
 		
-		//Evénement non visible
-		event.setActif(0);
+		id = 0;
+		event=v.validationEvenement(nom, adresse, hdebut, hfin, ddebut, dfin,id);
 		
-		//Test sur le nom
-		try {
-			v.validationNom(nom);
-		}
-		 catch ( Exception e ) {
-			 erreurs.put(CHAMP_NOM, e.getMessage());
-			 valide=false;
-		 }
-		event.setNom(nom);
-		
-		//Test sur l'adresse
-		try {
-			v.validationAdresse(adresse);
-		}
-		 catch ( Exception e ) {
-			 erreurs.put(CHAMP_ADRESSE, e.getMessage());
-			 valide=false;
-		 }
-		event.setAdresse(adresse);
-		
-		
-		// parse des dates
-		try {
-			dd=spDate.parse(ddebut);
-			df=spDate.parse(dfin);
-			hd=spHeure.parse(hdebut);
-			hf=spHeure.parse(hfin);
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			v.validationDate(ddebut,dfin,dd,df);
-			
-		}
-		
-		//test sur les dates
-		 catch ( Exception e ) {
-			 erreurs.put(CHAMP_DDEBUT, e.getMessage());
-			 erreurs.put(CHAMP_DFIN, e.getMessage());
-			 valide=false;
-		 }
-		event.setDatedebut(dd );
-		event.setDatefin(df);
-		
-		//test sur les heures
-		try {
-			v.validationHeure(hdebut,hfin,hd,hf);
-			
-		}
-		 catch ( Exception e ) {
-			 erreurs.put(CHAMP_HDEBUT, e.getMessage());
-			 erreurs.put(CHAMP_HFIN, e.getMessage());
-			 valide=false;
-		 }
-		event.setHeurefin(hf);
-		event.setHeuredebut(hf);
-		
-		//On Insert dans la base si tout les tests sont valides
-		if(valide){
+		//Si il y a une erreur
+		if(event!= null){
 			jpaEvent.insert(event);
+			response.sendRedirect(request.getContextPath() + "DescriptionEvent");
 		}
-		
-		process(request, response);
+		else{
+			response.sendRedirect("NewEvent?erreur=true");
+		}
 		
 	}
 
