@@ -9,19 +9,36 @@
 <title>Création d'un événement</title>
 </head>
 <body>
-	<div id="global">
-		<form id="event" method="post" action="creation">
-			<h1>Créer un événement</h1>
+		<form id="event" method="post" action="NewEvent">
 			<fieldset id="inputs">
-				<input id="eventname"   type="text" palceholder="Nom de l'événement" autofocus required>
-				<input id="adresse" type="text" palceholder="Adresse" required>
-				<input id="dhdebut" type="text" palceholder="Date Heure Début" required>
-				<input id="dhfin"   type="text" palceholder="Date Heure Fin" required>
+				<legend>Créer un événement</legend>
+				<label for="eventname">Nom de l'événement<span class="requis">*</span></label>
+				<input id="eventname"   type="text" palceholder="Nom de l'événement" size="20" maxlength="60" autofocus required>
+				 <br />
+				
+				<label for="adresse">Adresse<span class="requis">*</span></label>
+				<input id="adresse" type="text" palceholder="Adresse" size="20" maxlength="60"required>
+				 <br />
+				
+				<label for="hdebut">Heure Début<span class="requis">*</span></label>
+				<input id="hdebut" type="text" palceholder="Heure Début"size="20" maxlength="60" required>
+				 <br />
+				
+				<label for="hfin">Heure Fin<span class="requis">*</span></label>
+				<input id="hfin"   type="text" palceholder="Heure Fin" size="20" maxlength="60"required>
+				 <br />
+				
+				<label for="ddebut">Date Début<span class="requis">*</span></label>
+				<input id="ddebut" type="text" palceholder="Date Début" size="20" maxlength="60"required>
+				 <br />
+				
+				<label for="dfin">Date Fin<span class="requis">*</span></label>
+				<input id="dfin"   type="text" palceholder="Date Fin" size="20" maxlength="60"required>
+				 <br />
+			
+		        <input type="submit" id="submit" value="Créer" class="sansLabel">
+				 <br />
 			</fieldset>
-			<fieldset id="actions">
-		        <input type="submit" id="submit" value="Publier">
-		    </fieldset>
 		</form>
-	</div>
 </body>
 </html>
