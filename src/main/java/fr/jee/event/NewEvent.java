@@ -47,6 +47,7 @@ public class NewEvent extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		process(request, response);
 	}
 
@@ -67,10 +68,7 @@ public class NewEvent extends HttpServlet {
 		String ddebut = request.getParameter(CHAMP_DDEBUT);
 		String dfin = request.getParameter(CHAMP_DFIN);
 		validateEvent v = new validateEvent();
-		HttpSession session = request.getSession(false);
 		int id;
-		UsersEntity user = new UsersEntity();
-		UsersPersistenceJPA jpaUser = new UsersPersistenceJPA();
 		EventsPersistenceJPA jpaEvent = new EventsPersistenceJPA();
 		EventsEntity event = new EventsEntity();
 		

@@ -40,7 +40,7 @@
 				 <br />
 				 
 				 <c:if test="${param.erreur == \"true\" }">
-				<p class="erreur">Erreur donnée invalide</p>
+				<p >Erreur donnée invalide</p>
 				</c:if>
 			</fieldset>
 		</form>
