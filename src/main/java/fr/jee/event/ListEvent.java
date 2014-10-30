@@ -60,7 +60,7 @@ public class ListEvent extends HttpServlet {
 			jpaEvent.save(event);
 
 		}
-		response.sendRedirect("ListEvent");
+		response.sendRedirect("auth/ListEvent");
 		
 	}
 

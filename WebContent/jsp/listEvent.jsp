@@ -9,7 +9,7 @@
 <title>Vos événements</title>
 </head>
 <body>
-		<form id="event" method="post" action="ListEvent">
+		<form id="event" method="post" action="auth/ListEvent">
 		<fieldset id="inputs">
 				<legend>Vos événements : </legend>
 				<c:forEach items="${requestScope.events}" var="event">
@@ -40,7 +40,7 @@
 		        <input type="submit" id="submit" name ="publier" value="Publier" class="sansLabel">
 		        </c:if>
 		        <c:if test="${event.actif == 1 }">
-		        <a href="InscriptionEvent?id=${event.id}">${pageContext.request.contextPath}/InscriptionEvent?id=${event.id}</a>
+		        <a href="auth/InscriptionEvent?id=${event.id}">${pageContext.request.contextPath}/InscriptionEvent?id=${event.id}</a>
 		         <br />
 		         </c:if>
 				 <br />

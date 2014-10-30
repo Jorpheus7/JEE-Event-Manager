@@ -63,6 +63,7 @@ public class InscriptionEvent extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Recupération 
 		String nom = request.getParameter(CHAMP_NOM);
 		String prenom = request.getParameter(CHAMP_PRENOM);
 		String email = request.getParameter(CHAMP_EMAIL);
@@ -75,10 +76,10 @@ public class InscriptionEvent extends HttpServlet {
 		
 		if (participant!=null){
 			jpa.insert(participant);
-			response.sendRedirect("InscriptionEvent?id="+idEvent+"&erreur=false");
+			response.sendRedirect("auth/InscriptionEvent?id="+idEvent+"&erreur=false");
 		}
 		else{
-			response.sendRedirect("InscriptionEvent?id="+idEvent+"&erreur=true");
+			response.sendRedirect("auth/InscriptionEvent?id="+idEvent+"&erreur=true");
 		}
 		
 	}

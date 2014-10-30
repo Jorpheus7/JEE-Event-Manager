@@ -80,10 +80,10 @@ public class NewEvent extends HttpServlet {
 		//Si il y a une erreur
 		if(event!= null){
 			jpaEvent.insert(event);
-			response.sendRedirect("ListEvent");
+			response.sendRedirect("auth/ListEvent");
 		}
 		else{
-			response.sendRedirect("NewEvent?erreur=true");
+			response.sendRedirect("auth/NewEvent?erreur=true");
 		}
 		
 	}
