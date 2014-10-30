@@ -1,11 +1,9 @@
 package fr.jee.login;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,12 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.jee.model.jpa.UsersEntity;
+import fr.jee.persistence.services.jpa.UsersPersistenceJPA;
+import fr.jee.validate.ValidateUserLogin;
 
 /**
  * Servlet implementation class DoLogin
  */
 public class DoLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final String MAIL = "mail";
+	private static final String PASSWORD = "password";
+	
 	private final String REQUEST = "SELECT u FROM UsersEntity u WHERE u.mail = :mail AND u.passwd = :passwd";
        
     /**
@@ -46,21 +49,11 @@ public class DoLogin extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		// Testing the existence of the user
-		String mail = req.getParameter("mail");
-		String password = req.getParameter("password");
-
-		// TODO check into the database if the mail exist
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-unit1");
-		EntityManager em = emf.createEntityManager() ;
+		String mail = req.getParameter(MAIL);
+		String password = req.getParameter(PASSWORD);
 		
-		Query query = em.createQuery(REQUEST);
-		query.setParameter("mail", mail);
-		query.setParameter("passwd", password);
-		
-		UsersEntity user = (UsersEntity) query.getSingleResult();
-		// if exist, get the corresponding user
-		// Check if the password matches
-		em.close();
+		ValidateUserLogin v = new ValidateUserLogin();
+		UsersEntity user = v.validationUserLogin(mail, password);
 		
 		if(user != null){
 			session.setAttribute("isAuthentified", true);
@@ -70,6 +63,7 @@ public class DoLogin extends HttpServlet {
 		}else{
 			req.getRequestDispatcher("/login?status=invalid").forward(request, response);
 		}
+
 	}
 
 }

@@ -59,9 +59,7 @@ public class DoRegister extends HttpServlet {
 		}else{
 			ValidateUser v = new ValidateUser();
 			UsersPersistenceJPA jpaUser = new UsersPersistenceJPA();
-			UsersEntity user = new UsersEntity();
-			
-			user = v.validationUser(mail, confirmPassword);
+			UsersEntity user = v.validationUser(mail, password);
 			
 			//Si il y a une erreur
 			if(user != null){
