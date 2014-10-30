@@ -19,8 +19,8 @@
 			}
 			%>
 		    <fieldset id="inputs">
-		        <input id="username" type="text" placeholder="Username" autofocus required>   
-		        <input id="password" type="password" placeholder="Password" required>
+		        <input id="username" type="text" placeholder="Email" autofocus required>   
+		        <input id="password" type="password" placeholder="Mot de passe" required>
 		    </fieldset>
 		    <fieldset id="actions">
 		        <input type="submit" id="submit" value="Log in">
