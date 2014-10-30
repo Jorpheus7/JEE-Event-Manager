@@ -76,10 +76,10 @@ public class InscriptionEvent extends HttpServlet {
 		
 		if (participant!=null){
 			jpa.insert(participant);
-			response.sendRedirect("auth/InscriptionEvent?id="+idEvent+"&erreur=false");
+			response.sendRedirect("InscriptionEvent?id="+idEvent+"&erreur=false");
 		}
 		else{
-			response.sendRedirect("auth/InscriptionEvent?id="+idEvent+"&erreur=true");
+			response.sendRedirect("InscriptionEvent?id="+idEvent+"&erreur=true");
 		}
 		
 	}

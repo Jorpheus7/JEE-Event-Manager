@@ -40,7 +40,7 @@
 		        <input type="submit" id="submit" name ="publier" value="Publier" class="sansLabel">
 		        </c:if>
 		        <c:if test="${event.actif == 1 }">
-		        <a href="auth/InscriptionEvent?id=${event.id}">${pageContext.request.contextPath}/InscriptionEvent?id=${event.id}</a>
+		        <a href="InscriptionEvent?id=${event.id}">${pageContext.request.contextPath}/InscriptionEvent?id=${event.id}</a>
 		         <br />
 		         </c:if>
 				 <br />
