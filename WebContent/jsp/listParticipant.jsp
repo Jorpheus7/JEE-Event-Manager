@@ -9,7 +9,7 @@
 <title>Liste des participants</title>
 </head>
 <body>
-<form id="participants" method="post" action="auth/ListParticipant">
+<form id="participants" method="post" action="ListParticipant">
 		<fieldset id="inputs">
 				<legend>Participants à l'événement ${event.nom} </legend>
 				<c:forEach items="${requestScope.participants}" var="participant">
@@ -39,6 +39,6 @@
 				</c:forEach>
 				</fieldset>
 		</form>
-		<a href="auth/ListEvent">Liste des événements</a>
+		<a href=<c:url value="/auth/ListEvent"/> >Liste des événements</a>
 </body>
 </html>

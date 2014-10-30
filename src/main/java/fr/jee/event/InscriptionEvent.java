@@ -12,7 +12,7 @@ import fr.jee.model.jpa.EventsEntity;
 import fr.jee.model.jpa.ParticipantsEntity;
 import fr.jee.persistence.services.jpa.EventsPersistenceJPA;
 import fr.jee.persistence.services.jpa.ParticipantsPersistenceJPA;
-import fr.jee.validate.validateInscription;
+import fr.jee.validate.ValidateInscription;
 
 
 
@@ -63,7 +63,7 @@ public class InscriptionEvent extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Recupération 
+		//Recupï¿½ration 
 		String nom = request.getParameter(CHAMP_NOM);
 		String prenom = request.getParameter(CHAMP_PRENOM);
 		String email = request.getParameter(CHAMP_EMAIL);
@@ -71,15 +71,15 @@ public class InscriptionEvent extends HttpServlet {
 		int idEvent =Integer.parseInt(request.getParameter(CHAMP_IDEVENT));
 		ParticipantsPersistenceJPA jpa = new ParticipantsPersistenceJPA();
 		ParticipantsEntity participant = new ParticipantsEntity();
-		validateInscription v          = new validateInscription();
+		ValidateInscription v          = new ValidateInscription();
 		participant = v.validationInscription(email, nom, prenom, societe, idEvent);
 		
 		if (participant!=null){
 			jpa.insert(participant);
-			response.sendRedirect("InscriptionEvent?id="+idEvent+"&erreur=false");
+			response.sendRedirect(request.getContextPath()+"/InscriptionEvent?id="+idEvent+"&erreur=false");
 		}
 		else{
-			response.sendRedirect("InscriptionEvent?id="+idEvent+"&erreur=true");
+			response.sendRedirect(request.getContextPath()+"/InscriptionEvent?id="+idEvent+"&erreur=true");
 		}
 		
 	}

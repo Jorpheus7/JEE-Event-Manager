@@ -60,23 +60,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>Event</display-name>
-    <servlet-name>Event</servlet-name>
-    <servlet-class>fr.jee.model.Event</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Event</servlet-name>
-    <url-pattern>/Event</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>NewEvent</display-name>
     <servlet-name>NewEvent</servlet-name>
     <servlet-class>fr.jee.event.NewEvent</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>NewEvent</servlet-name>
-    <url-pattern>/NewEvent</url-pattern>
+    <url-pattern>/auth/NewEvent</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -90,23 +80,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>DescriptionEvent</display-name>
-    <servlet-name>DescriptionEvent</servlet-name>
-    <servlet-class>fr.jee.event.DescriptionEvent</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DescriptionEvent</servlet-name>
-    <url-pattern>/DescriptionEvent</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>ListEvent</display-name>
     <servlet-name>ListEvent</servlet-name>
     <servlet-class>fr.jee.event.ListEvent</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ListEvent</servlet-name>
-    <url-pattern>/ListEvent</url-pattern>
+    <url-pattern>/auth/ListEvent</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -116,7 +96,16 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ListParticipant</servlet-name>
-    <url-pattern>/ListParticipant</url-pattern>
+    <url-pattern>/auth/ListParticipant</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Logout Servlet</description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>fr.jee.login.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
 </web-app>
-

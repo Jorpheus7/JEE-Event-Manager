@@ -15,7 +15,7 @@ import fr.jee.persistence.services.jpa.UsersPersistenceJPA;
 
 
 
-public class validateEvent {
+public class ValidateEvent {
 
 	public EventsEntity validationEvenement(String nom ,String adresse,String hdebut ,String hfin,String ddebut,String dfin,int id){
 		if(nom.length() < 3 || adresse.length() < 3 )

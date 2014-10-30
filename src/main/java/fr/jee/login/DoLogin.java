@@ -58,7 +58,7 @@ public class DoLogin extends HttpServlet {
 		if(user != null){
 			session.setAttribute("isAuthentified", true);
 			session.setAttribute("userID", user.getId());
-			response.sendRedirect(req.getContextPath()+"/auth");
+			response.sendRedirect(req.getContextPath()+"/auth/ListEvent");
 			//req.getRequestDispatcher("/auth").forward(request, response);
 		}else{
 			req.getRequestDispatcher("/login?status=invalid").forward(request, response);

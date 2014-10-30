@@ -9,7 +9,7 @@
 <title>Création d'un événement</title>
 </head>
 <body>
-		<form id="event" method="post" action="auth/NewEvent">
+		<form id="event" method="post" action="NewEvent">
 			<fieldset id="inputs">
 				<legend>Créer un événement</legend>
 				<label for="eventname">Nom de l'événement<span class="requis">*</span></label>

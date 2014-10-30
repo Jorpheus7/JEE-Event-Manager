@@ -42,11 +42,11 @@ public class ListParticipant extends HttpServlet {
 			EventsEntity event = new EventsPersistenceJPA().load(idE);
 			
 			if(event.getActif()==0)
-				response.sendRedirect("PageErreur.html");	
+				response.sendRedirect(request.getContextPath()+"PageErreur.html");	
 			else{
 				List<ParticipantsEntity> participants = new ListParticipantsReq().execute(id);
 				if(participants.size() == 0)
-					response.sendRedirect("PageErreur.html");
+					response.sendRedirect(request.getContextPath()+"PageErreur.html");
 				else {
 					request.setAttribute("event", event);
 					request.setAttribute("participants", participants);
@@ -55,7 +55,7 @@ public class ListParticipant extends HttpServlet {
 			}
 		}
 		else {
-			response.sendRedirect("PageErreur.html");	
+			response.sendRedirect(request.getContextPath()+"PageErreur.html");	
 		}	
 	}
 

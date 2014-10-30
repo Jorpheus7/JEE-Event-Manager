@@ -9,7 +9,7 @@
 <title>Vos événements</title>
 </head>
 <body>
-		<form id="event" method="post" action="auth/ListEvent">
+		<form id="event" method="post" action="ListEvent">
 		<fieldset id="inputs">
 				<legend>Vos événements : </legend>
 				<c:forEach items="${requestScope.events}" var="event">
@@ -40,7 +40,8 @@
 		        <input type="submit" id="submit" name ="publier" value="Publier" class="sansLabel">
 		        </c:if>
 		        <c:if test="${event.actif == 1 }">
-		        <a href="InscriptionEvent?id=${event.id}">${pageContext.request.contextPath}/InscriptionEvent?id=${event.id}</a>
+		        <p>Lien d'inscription à l'évènement : <a href=<c:url value="/InscriptionEvent?id=${event.id}"/> ><c:url value="/InscriptionEvent?id=${event.id}"/></a></p>
+		        <a href=<c:url value="/auth/ListParticipant?id=${event.id}"/> >Voir les participants</a>
 		         <br />
 		         </c:if>
 				 <br />
@@ -48,5 +49,6 @@
 				</fieldset>
 		</form>
 		<a href="NewEvent">Créer un événement</a>
+		<p id="logout"><a href="<c:url value="/logout"/>"> <button>Déconnexion</button></a></p>
 </body>
 </html>

@@ -39,7 +39,7 @@ public class ListEvent extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		int id = 1; //(int) session.getAttribute("id");
+		int id = (int) session.getAttribute("userID");
 		List<EventsEntity> events = new ListEventReq().execute(id);
 		request.setAttribute("events", events);
 		process(request,response);
@@ -60,7 +60,7 @@ public class ListEvent extends HttpServlet {
 			jpaEvent.save(event);
 
 		}
-		response.sendRedirect("auth/ListEvent");
+		response.sendRedirect(request.getContextPath()+"/auth/ListEvent");
 		
 	}
 

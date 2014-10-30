@@ -9,7 +9,7 @@
 <title>Inscription</title>
 </head>
 <body>
-	<form id="event" method="post" action="auth/InscriptionEvent" >
+	<form id="event" method="post" action=<c:url value="/InscriptionEvent"/> >
 			<fieldset id="inputs">
 				<legend>Inscription à ${event.nom }</legend>
 							

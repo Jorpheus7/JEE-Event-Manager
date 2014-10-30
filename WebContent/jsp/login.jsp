@@ -19,7 +19,7 @@
 			}
 			%>
 		    <fieldset id="inputs">
-		        <input id="mail" type="text" placeholder="Email" name="mail" autofocus required>   
+		        <input id="mail" type="mail" placeholder="Email" name="mail" autofocus required>   
 		        <input id="password" type="password" placeholder="Mot de passe" name="password" required>
 		    </fieldset>
 		    <fieldset id="actions">

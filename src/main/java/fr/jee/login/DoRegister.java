@@ -67,7 +67,7 @@ public class DoRegister extends HttpServlet {
 				// Get in return the user id to store it into session
 				session.setAttribute("isAuthentified", true);
 				session.setAttribute("userID", user.getId());
-				response.sendRedirect(req.getContextPath()+"/ListEvent");
+				response.sendRedirect(req.getContextPath()+"/auth/ListEvent");
 			}
 			else{
 				response.sendRedirect("ListEvent");
