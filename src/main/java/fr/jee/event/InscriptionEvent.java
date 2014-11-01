@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import fr.jee.model.jpa.EventsEntity;
 import fr.jee.model.jpa.ParticipantsEntity;
 import fr.jee.persistence.services.jpa.EventsPersistenceJPA;
@@ -49,7 +51,7 @@ public class InscriptionEvent extends HttpServlet {
 				response.sendRedirect("PageErreur.html");	
 			else{
 				request.setAttribute("event", event);
-				process(request, response);
+				process(request, response);			
 			}
 		
 		}	
@@ -63,12 +65,12 @@ public class InscriptionEvent extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Recupï¿½ration 
 		String nom = request.getParameter(CHAMP_NOM);
 		String prenom = request.getParameter(CHAMP_PRENOM);
 		String email = request.getParameter(CHAMP_EMAIL);
 		String societe = request.getParameter(CHAMP_SOCIETE);
 		int idEvent =Integer.parseInt(request.getParameter(CHAMP_IDEVENT));
+		Logger log = Logger.getLogger(InscriptionEvent.class);
 		ParticipantsPersistenceJPA jpa = new ParticipantsPersistenceJPA();
 		ParticipantsEntity participant = new ParticipantsEntity();
 		ValidateInscription v          = new ValidateInscription();
@@ -76,6 +78,7 @@ public class InscriptionEvent extends HttpServlet {
 		
 		if (participant!=null){
 			jpa.insert(participant);
+			log.info("Inscription réussi");
 			response.sendRedirect(request.getContextPath()+"/InscriptionEvent?id="+idEvent+"&erreur=false");
 		}
 		else{
