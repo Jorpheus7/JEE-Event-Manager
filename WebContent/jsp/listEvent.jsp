@@ -45,6 +45,7 @@
 		         <br />
 		         </c:if>
 				 <br />
+				 <hr/>
 				</c:forEach>
 				</fieldset>
 		</form>
