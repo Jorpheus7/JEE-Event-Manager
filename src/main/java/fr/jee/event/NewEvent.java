@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import fr.jee.model.jpa.EventsEntity;
 import fr.jee.persistence.services.jpa.EventsPersistenceJPA;
 import fr.jee.validate.ValidateEvent;
@@ -60,6 +62,7 @@ public class NewEvent extends HttpServlet {
 		String dfin = request.getParameter(CHAMP_DFIN);
 		HttpSession session = request.getSession();
 		ValidateEvent v = new ValidateEvent();
+		Logger log = Logger.getLogger(NewEvent.class);
 		int id;
 		EventsPersistenceJPA jpaEvent = new EventsPersistenceJPA();
 		EventsEntity event = new EventsEntity();
@@ -71,6 +74,7 @@ public class NewEvent extends HttpServlet {
 		//Si il y a une erreur
 		if(event!= null){
 			jpaEvent.insert(event);
+			log.info("Evénement créé");
 			response.sendRedirect(request.getContextPath()+"/auth/ListEvent");
 		}
 		else{
