@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import fr.jee.model.jpa.EventsEntity;
 import fr.jee.models.ListEventReq;
 import fr.jee.persistence.services.jpa.EventsPersistenceJPA;
@@ -54,10 +56,12 @@ public class ListEvent extends HttpServlet {
 		String id = request.getParameter("id");
 		EventsPersistenceJPA jpaEvent = new EventsPersistenceJPA();
 		EventsEntity event = new EventsEntity();
+		Logger log = Logger.getLogger(ListEvent.class);
 		if(publier != null){
 			event=jpaEvent.load(Integer.parseInt(id));
 			event.setActif(1);
 			jpaEvent.save(event);
+			log.info("Publication réussi");
 
 		}
 		response.sendRedirect(request.getContextPath()+"/auth/ListEvent");
