@@ -1,3 +1,5 @@
+-- Utiliser le script de creation de base du package oneshot
+
 INSERT INTO Users( mail, passwd) VALUES('a@mail.fr', 'azerty1');
 INSERT INTO Users( mail, passwd) VALUES('b@mail.fr', 'azerty2');
 INSERT INTO Users( mail, passwd) VALUES('c@mail.fr', 'azerty3');

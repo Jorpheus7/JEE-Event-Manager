@@ -66,14 +66,16 @@ public class UsersPersistenceTest
 
 			// No reference : insert is possible 
 			// Try to insert the new instance
+			/* Insert only if references are OK
 			System.out.println(" . insert : " + entity );
 			service.insert(entity);
 			System.out.println("   inserted : " + entity );
+			*/
 
 			System.out.println(" . delete : " );
 			boolean deleted = service.delete( id );
 			System.out.println("   deleted = " + deleted);
-			Assert.assertTrue(deleted) ;
+			Assert.assertFalse(deleted) ;
 		}		
 	}
 }
